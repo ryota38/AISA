@@ -1,0 +1,22 @@
+{
+  "name": "ai-saeko",
+  "version": "1.0.0",
+  "description": "AI-saeko test version",
+  "main": "main.mjs",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ryo Tamiya",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^34.0.0",
+    "textlint": "^14.4.2",
+    "textlint-rule-preset-ja-technical-writing": "^12.0.2"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.0.12",
+    "openai": "^4.98.0",
+    "tailwindcss": "^4.0.12"
+  }
+}
