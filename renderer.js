@@ -14,3 +14,14 @@ btn.addEventListener('click', async () => {
   
   // checkResultsElement.innerText = checkResults.message
 })
+
+const AIcheckbtn = document.getElementById('AIcheckbtn')
+
+AIcheckbtn.addEventListener('click', async () => {
+  const checkResults = await window.electronAPI.ollama(checkInput.value)
+  
+  checkResultsElement.innerText = ''
+
+  checkResultsElement.innerText = checkResults.message.content
+  
+})

@@ -4,6 +4,8 @@ import { app, BrowserWindow, ipcMain } from 'electron/main';
 import path, { dirname } from 'path'
 import { fileURLToPath } from "url";
 
+import { Ollama } from 'ollama';
+
 async function handleTextLint(event, text) {
   const descriptor = await loadTextlintrc();
   const linter = createLinter({ descriptor });
@@ -11,6 +13,16 @@ async function handleTextLint(event, text) {
 
   console.log(results);
   return results.messages
+
+}
+
+async function handleOllama(event, text) {
+
+  const ollama = new Ollama({host: 'http://localhost:11434'})
+  const message = { role: 'user', content: '以下の文章をエンジニアとしてより伝わるような内容にするための改善案を挙げてください。その上で、改善後の文章案を作成してください。 ###校正してほしい文章:' + text }
+  const response = await ollama.chat({ model: 'deepseek-r1', messages: [message]})
+
+  return response
 
 }
 
@@ -29,6 +41,7 @@ const createWindow = () => {
 
 app.whenReady().then(() => {
   ipcMain.handle('textlint', handleTextLint)
+  ipcMain.handle('ollama', handleOllama)
   createWindow()
 })
 
@@ -49,4 +62,8 @@ ipcMain.on('textlint' , (event, text) => {
   console.log(results)
 
   event.returnValue = results.messages
+})
+
+ipcMain.on('ollama' , (event, text) => {
+    console.log(text)
 })
