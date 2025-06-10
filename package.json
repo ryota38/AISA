@@ -12,15 +12,15 @@
   "license": "MIT",
   "devDependencies": {
     "@electron/packager": "^18.3.6",
-    "electron": "^34.0.0",
-    "textlint": "^14.4.2",
-    "textlint-rule-preset-ja-technical-writing": "^12.0.2"
+    "electron": "^34.0.0"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.0.12",
     "electron-store": "^10.0.1",
     "ollama": "^0.5.15",
     "openai": "^4.98.0",
-    "tailwindcss": "^4.0.12"
+    "tailwindcss": "^4.0.12",
+    "textlint": "^14.4.2",
+    "textlint-rule-preset-ja-technical-writing": "^12.0.2"
   }
 }
